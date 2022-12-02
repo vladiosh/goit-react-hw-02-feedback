@@ -11,14 +11,22 @@ class Feedback extends Component {
   };
 
   handleGood = () => {
-    this.setState(prevState => {
-      return { good: prevState.good + 1 };
-    });
+    this.setState(prevState => ({
+      good: prevState.good + 1,
+    }));
   };
 
-  handleNeutral = () => {};
+  handleNeutral = () => {
+    this.setState(prevState => ({
+      neutral: prevState.neutral + 1,
+    }));
+  };
 
-  handleBad = () => {};
+  handleBad = () => {
+    this.setState(prevState => ({
+      bad: prevState.bad + 1,
+    }));
+  };
 
   render() {
     return (

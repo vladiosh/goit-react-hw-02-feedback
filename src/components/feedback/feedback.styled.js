@@ -1,12 +1,14 @@
 import styled from 'styled-components';
 
+export const HeadFeedback = styled.h1``;
+
 export const FeedbackForm = styled.div`
   margin-left: auto;
   margin-right: auto;
 `;
 
-export const ButtonList = styled.div`
+export const ButtonList = styled.ul`
   display: flex;
-  list-style: none;
+
   gap: 5px;
 `;
