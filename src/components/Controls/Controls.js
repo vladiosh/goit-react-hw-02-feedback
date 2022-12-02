@@ -1,5 +1,5 @@
 import React from 'react';
-import { ButtonList } from 'components/Feedback/Feedback.styled';
+import { ButtonList } from './Controls.styled';
 
 const Controls = ({ onGood, onNeutral, onBad }) => {
   return (

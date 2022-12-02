@@ -1,7 +1,7 @@
 import React from 'react';
 import { Component } from 'react';
-import Controls from './Controls';
-import Statistics from './Statistics';
+import Controls from '../Controls/Controls';
+import Statistics from '../Statistics/Statistics';
 
 import { FeedbackForm } from 'components/Feedback/Feedback.styled';
 

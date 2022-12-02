@@ -7,8 +7,4 @@ export const FeedbackForm = styled.div`
   margin-right: auto;
 `;
 
-export const ButtonList = styled.ul`
-  display: flex;
 
-  gap: 5px;
-`;
