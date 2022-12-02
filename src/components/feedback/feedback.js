@@ -1,7 +1,9 @@
 import React from 'react';
 import { Component } from 'react';
+import Controls from './Controls';
+import Statistics from './Statistics';
 
-import { FeedbackForm, ButtonList } from 'components/feedback/feedback.styled';
+import { FeedbackForm } from 'components/Feedback/Feedback.styled';
 
 class Feedback extends Component {
   state = {
@@ -28,37 +30,39 @@ class Feedback extends Component {
     }));
   };
 
+  countTotalFeedback = () => {
+    const { good, neutral, bad } = this.state;
+    return good + neutral + bad;
+  };
+
+  countPositiveFeedbackPercentage = () => {
+    const { good, neutral, bad } = this.state;
+    const percentageGoodFeedback = Math.round(
+      (good / (good + neutral + bad)) * 100
+    );
+    return percentageGoodFeedback ? percentageGoodFeedback : 0;
+  };
+
   render() {
+    const { good, neutral, bad } = this.state;
+    const totalFeedback = this.countTotalFeedback();
+    const positiveFeedbackPercentage = this.countPositiveFeedbackPercentage();
     return (
       <FeedbackForm>
         <h1 className="head__feedback">Please leave feedback</h1>
-        <div className="button">
-          <ButtonList>
-            <li className="button__item">
-              <button type="button" onClick={this.handleGood}>
-                Good
-              </button>
-            </li>
-            <li className="button__item">
-              <button type="button" onClick={this.handleNeutral}>
-                Neutral
-              </button>
-            </li>
-            <li className="button__item">
-              <button type="button" onClick={this.handleBad}>
-                Bad
-              </button>
-            </li>
-          </ButtonList>
-        </div>
-        <div className="statistics">
-          <h2 className="head__stat">Statistics</h2>
-          <ul className="stat__list">
-            <li className="stat__item">good:{this.state.good}</li>
-            <li className="stat__item">neutral:{this.state.neutral}</li>
-            <li className="stat__item">bad:{this.state.bad}</li>
-          </ul>
-        </div>
+        <Controls
+          onGood={this.handleGood}
+          onNeutral={this.handleNeutral}
+          onBad={this.handleBad}
+        />
+
+        <Statistics
+          good={good}
+          neutral={neutral}
+          bad={bad}
+          total={totalFeedback}
+          positivePercentage={positiveFeedbackPercentage}
+        />
       </FeedbackForm>
     );
   }
