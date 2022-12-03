@@ -3,6 +3,7 @@ import { Component } from 'react';
 
 import FeedbackOptions from '../FeedbackOptions';
 import Statistics from '../Statistics';
+import Section from '../Section/Section';
 
 import { Container } from './App.styled';
 
@@ -36,18 +37,21 @@ class App extends Component {
     const feedback = Object.keys(this.state);
     return (
       <Container>
-        <h1 className="head__feedback">Please leave feedback</h1>
-        <FeedbackOptions
-          options={feedback}
-          onLeaveFeedback={this.handleIncrement}
-        />
-        <Statistics
-          good={good}
-          neutral={neutral}
-          bad={bad}
-          total={totalFeedback}
-          positivePercentage={positiveFeedbackPercentage}
-        />
+        <Section title="Please leave feedback">
+          <FeedbackOptions
+            options={feedback}
+            onLeaveFeedback={this.handleIncrement}
+          />
+        </Section>
+        <Section title="Statistics">
+          <Statistics
+            good={good}
+            neutral={neutral}
+            bad={bad}
+            total={totalFeedback}
+            positivePercentage={positiveFeedbackPercentage}
+          />
+        </Section>
       </Container>
     );
   }
